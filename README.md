@@ -28,7 +28,7 @@ Use the factory to create some demo data.
     php artisan tinker
 
 ```php
-factory(App\Category::class, 100)->create();
+factory(App\Category::class, 10)->create()->each(function ($category) { $apps = factory(App\App::class, 20)->make(); $category->apps()->saveMany($apps); });
 ```
 
-Now browse to `/api/v1/categories` or `/api/v1/categories/{id}`
+Now browse to `/api/v1/categories` or `/api/v1/categories/1/apps`
